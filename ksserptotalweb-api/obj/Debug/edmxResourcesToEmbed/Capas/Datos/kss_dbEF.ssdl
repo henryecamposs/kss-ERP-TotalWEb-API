@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kss_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cajas">
+    <Key>
+      <PropertyRef Name="id_Cajas" />
+    </Key>
+    <Property Name="id_Cajas" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Estaciones" Type="smallint" />
+    <Property Name="id_ClientesPred" Type="bigint" Nullable="false" />
+    <Property Name="id_TiposPagoPred" Type="smallint" Nullable="false" />
+    <Property Name="id_DefTiposPrecioPred" Type="smallint" Nullable="false" />
+    <Property Name="CantidadUnidadVentaPred" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="esAbierta" Type="bit" />
+    <Property Name="esActivo" Type="bit" />
+    <Property Name="esAgruparItemsIdenticos" Type="bit" />
+    <Property Name="esNroFactura_Person" Type="bit" Nullable="false" />
+    <Property Name="esRemoto" Type="bit" />
+    <Property Name="FechaAnterior" Type="datetime" />
+    <Property Name="FechaApertura" Type="datetime" />
+    <Property Name="MontoApertura" Type="decimal" Precision="38" Scale="4" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+    <Property Name="NroFacturaAnteior_IF" Type="int" Nullable="false" />
+    <Property Name="NroFacturaAnterior" Type="int" Nullable="false" />
+    <Property Name="Serial_IF" Type="text" />
+  </EntityType>
+  <EntityType Name="Empresas">
+    <Key>
+      <PropertyRef Name="id_empresas" />
+    </Key>
+    <Property Name="id_empresas" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_world_Localidades" Type="bigint" />
+    <Property Name="id_world_Regiones" Type="bigint" Nullable="false" />
+    <Property Name="id_world_Idiomas" Type="bigint" />
+    <Property Name="id_ven_Municipios" Type="smallint" />
+    <Property Name="id_world_Paises" Type="bigint" />
+    <Property Name="id_ven_Parroquias" Type="bigint" />
+    <Property Name="id_tiposComercio" Type="bigint" Nullable="false" />
+    <Property Name="codigoPostal" Type="nvarchar" MaxLength="5" />
+    <Property Name="Contacto" Type="nvarchar" MaxLength="100" />
+    <Property Name="direccion" Type="nvarchar" MaxLength="255" />
+    <Property Name="empresa" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="esActivo" Type="bit" />
+    <Property Name="ImagenArchivo" Type="varchar" MaxLength="255" />
+    <Property Name="nit" Type="nvarchar" MaxLength="12" />
+    <Property Name="rif" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="telefonos" Type="nvarchar" MaxLength="11" />
+    <Property Name="telefonosContacto" Type="nvarchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="Estaciones">
+    <Key>
+      <PropertyRef Name="id_Estaciones" />
+    </Key>
+    <Property Name="id_Estaciones" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Licencia" Type="smallint" Nullable="false" />
+    <Property Name="id_DefTipos_Estacion" Type="smallint" Nullable="false" />
+    <Property Name="id_DefTipos_PedirDatosCliente" Type="smallint" />
+    <Property Name="id_DefTipos_PrecioPredet" Type="smallint" Nullable="false" />
+    <Property Name="id_DefTipos_DescargaInventario" Type="smallint" />
+    <Property Name="id_Almacenes" Type="smallint" Nullable="false" />
+    <Property Name="esActivo" Type="bit" Nullable="false" />
+    <Property Name="esimprimirEgreso" Type="bit" Nullable="false" />
+    <Property Name="esImprimirFiscal" Type="bit" Nullable="false" />
+    <Property Name="esOffline" Type="bit" Nullable="false" />
+    <Property Name="esPedirCantidad" Type="bit" Nullable="false" />
+    <Property Name="esPreguntarCerrarApp" Type="bit" Nullable="false" />
+    <Property Name="esRemoto" Type="bit" Nullable="false" />
+    <Property Name="esRequierePassword" Type="bit" Nullable="false" />
+    <Property Name="IPEstacion" Type="nvarchar" MaxLength="15" />
+    <Property Name="NombreEquipo" Type="nvarchar" MaxLength="100" />
+    <Property Name="NombreEstacion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="esImprimirNConsumo" Type="bit" Nullable="false" />
+    <Property Name="esPoseeTeclado" Type="bit" Nullable="false" />
+    <Property Name="esPoseeVisorPrecio" Type="bit" Nullable="false" />
+    <Property Name="esPoseeVisorPreciosMonitorExtra" Type="bit" Nullable="false" />
+    <Property Name="esPoseeGaveta" Type="bit" />
+    <Property Name="esPoseeCaptaHuella" Type="bit" />
+    <Property Name="esPoseePantallaTactil" Type="bit" />
+    <Property Name="esPoseeMouse" Type="bit" />
+    <Property Name="esPoseeLectorPOSBanca" Type="bit" />
+    <Property Name="FechaUltimaConfiguracion" Type="datetime" />
+    <Property Name="esCliente_SolicitarEmail" Type="bit" />
+    <Property Name="esCliente_SolicitarRIF" Type="bit" />
+    <Property Name="esCliente_SolicitarTelefono" Type="bit" />
+    <Property Name="esSolicitarEmpleado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Facturas">
+    <Key>
+      <PropertyRef Name="id_Facturas" />
+    </Key>
+    <Property Name="id_Facturas" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Cajas" Type="smallint" />
+    <Property Name="id_Usuarios" Type="smallint" />
+    <Property Name="id_Clientes" Type="bigint" />
+    <Property Name="id_Cajas_Cortes" Type="bigint" />
+    <Property Name="id_DefStatusFactura" Type="smallint" />
+    <Property Name="id_Estaciones_Sesiones" Type="bigint" Nullable="false" />
+    <Property Name="Comentarios" Type="nvarchar" MaxLength="2000" />
+    <Property Name="FechaActual" Type="datetime" Nullable="false" />
+    <Property Name="FechaFactura" Type="datetime" Nullable="false" />
+    <Property Name="nroFactura" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="nroFacturaIF" Type="nvarchar" MaxLength="12" />
+    <Property Name="nroControl" Type="nvarchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="Facturas_Detalle">
+    <Key>
+      <PropertyRef Name="id_Facturas_Detalle" />
+    </Key>
+    <Property Name="id_Facturas_Detalle" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Facturas" Type="bigint" Nullable="false" />
+    <Property Name="id_Productos" Type="bigint" Nullable="false" />
+    <Property Name="id_TiposProducto" Type="smallint" />
+    <Property Name="id_DefTiposPrecio" Type="tinyint" Nullable="false" />
+    <Property Name="nroItem" Type="tinyint" Nullable="false" />
+    <Property Name="Cantidad" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Producto" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MontoPrecio" Type="decimal" Precision="38" Scale="4" Nullable="false" />
+    <Property Name="Observacion" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Facturas_Detalle_Descuentos">
+    <Key>
+      <PropertyRef Name="id_Facturas_Detalle_Descuentos" />
+    </Key>
+    <Property Name="id_Facturas_Detalle_Descuentos" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Facturas_Detalle" Type="bigint" Nullable="false" />
+    <Property Name="id_TiposDescuento" Type="smallint" Nullable="false" />
+    <Property Name="TasaValor" Type="decimal" Precision="38" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Facturas_Detalle_Impuestos">
+    <Key>
+      <PropertyRef Name="id_Facturas_Detalle_Impuestos" />
+    </Key>
+    <Property Name="id_Facturas_Detalle_Impuestos" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_TiposImpuestos" Type="smallint" Nullable="false" />
+    <Property Name="id_Facturas_Detalle" Type="bigint" Nullable="false" />
+    <Property Name="Tasa" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Facturas_TiposPago">
+    <Key>
+      <PropertyRef Name="id_Facturas_TiposPago" />
+    </Key>
+    <Property Name="id_Facturas_TiposPago" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_TiposBancos" Type="smallint" />
+    <Property Name="id_Facturas" Type="bigint" Nullable="false" />
+    <Property Name="id_TiposPago" Type="smallint" Nullable="false" />
+    <Property Name="DescripicionDocumento" Type="nvarchar" MaxLength="50" />
+    <Property Name="Monto" Type="decimal" Precision="38" Scale="4" Nullable="false" />
+    <Property Name="nroAprobacion" Type="tinyint" />
+    <Property Name="nroDocumento" Type="nvarchar" MaxLength="12" />
+    <Property Name="nroRecibo" Type="nvarchar" MaxLength="12" />
+    <Property Name="FechaActual" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="id_Productos" />
+    </Key>
+    <Property Name="id_Productos" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_Productos_familias" Type="smallint" Nullable="false" />
+    <Property Name="id_TiposMarcas" Type="smallint" />
+    <Property Name="id_TiposUnidadesMedida" Type="smallint" Nullable="false" />
+    <Property Name="cantidadUnidadVenta" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="CodigoAdicional" Type="nvarchar" MaxLength="50" />
+    <Property Name="CodigoBarras" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CodigoInterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="FechaUltimaCompra" Type="datetime" />
+    <Property Name="FechaUltimaModificacion" Type="datetime" />
+    <Property Name="FechaUltimaVenta" Type="datetime" />
+    <Property Name="MargenGananciaPrecio1" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="MargenGananciaPrecio2" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="MargenGananciaPrecio3" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="MontoCostoPromedio" Type="decimal" Precision="38" Scale="4" />
+    <Property Name="MontoPrecio1" Type="decimal" Precision="38" Scale="4" Nullable="false" />
+    <Property Name="MontoPrecio2" Type="decimal" Precision="38" Scale="4" />
+    <Property Name="MontoPrecio3" Type="decimal" Precision="38" Scale="4" />
+    <Property Name="MontoUltimoCosto" Type="decimal" Precision="38" Scale="4" />
+    <Property Name="nDiasGarantia" Type="tinyint" />
+    <Property Name="Producto" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Producto_DescripcionLarga" Type="varchar" MaxLength="255" />
+    <Property Name="Producto_LinkWeb" Type="nvarchar" MaxLength="100" />
+    <Property Name="nStockMaximo" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="nStockMinimo" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="esAvisoStockMinimo" Type="bit" />
+    <Property Name="esAvisoStockMaximo" Type="bit" />
+    <Property Name="MedidaAlto" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="MedidaAncho" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="MedidaLargo" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="esActivo" Type="bit" />
+    <Property Name="esCodigoAlterno" Type="bit" />
+    <Property Name="esCompuesto" Type="bit" />
+    <Property Name="esFavorito" Type="bit" />
+    <Property Name="esGarantia" Type="bit" />
+    <Property Name="esImportado" Type="bit" />
+    <Property Name="esInventario" Type="bit" />
+    <Property Name="esPideComentario" Type="bit" />
+    <Property Name="esPidePeso" Type="bit" />
+    <Property Name="esPidePrecio" Type="bit" />
+    <Property Name="esPideTipoProducto" Type="bit" />
+    <Property Name="esUsoInterno" Type="bit" />
+    <Property Name="esControlVenta" Type="bit" />
+    <Property Name="nCantidadMaxventa" Type="decimal" Precision="5" Scale="2" />
+  </EntityType>
+  <EntityType Name="Productos_Familias">
+    <Key>
+      <PropertyRef Name="id_Productos_Familias" />
+    </Key>
+    <Property Name="id_Productos_Familias" Type="smallint" Nullable="false" />
+    <Property Name="FamiliaProducto" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sucursales">
+    <Key>
+      <PropertyRef Name="id_sucursales" />
+    </Key>
+    <Property Name="id_sucursales" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_empresas" Type="bigint" Nullable="false" />
+    <Property Name="id_world_Localidades" Type="bigint" />
+    <Property Name="id_world_Regiones" Type="bigint" Nullable="false" />
+    <Property Name="id_world_Idiomas" Type="bigint" />
+    <Property Name="id_ven_Municipios" Type="smallint" />
+    <Property Name="id_world_Paises" Type="bigint" />
+    <Property Name="id_ven_Parroquias" Type="bigint" />
+    <Property Name="id_tiposComercio" Type="bigint" Nullable="false" />
+    <Property Name="codigoPostal" Type="nvarchar" MaxLength="5" />
+    <Property Name="Contacto" Type="nvarchar" MaxLength="100" />
+    <Property Name="direccion" Type="nvarchar" MaxLength="255" />
+    <Property Name="empresa" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="esActivo" Type="bit" />
+    <Property Name="ImagenArchivo" Type="varchar" MaxLength="255" />
+    <Property Name="nit" Type="nvarchar" MaxLength="12" />
+    <Property Name="rif" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="telefonos" Type="nvarchar" MaxLength="11" />
+    <Property Name="telefonosContacto" Type="nvarchar" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="TiposUnidadesMedida">
+    <Key>
+      <PropertyRef Name="id_TiposUnidadesMedida" />
+    </Key>
+    <Property Name="id_TiposUnidadesMedida" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_world_UnidadesMedida" Type="smallint" />
+    <Property Name="CantidadPredeterminada" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="UnidadMedida" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Cajas_Estaciones">
+    <End Role="Estaciones" Type="Self.Estaciones" Multiplicity="0..1" />
+    <End Role="Cajas" Type="Self.Cajas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estaciones">
+        <PropertyRef Name="id_Estaciones" />
+      </Principal>
+      <Dependent Role="Cajas">
+        <PropertyRef Name="id_Estaciones" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facturas_Cajas">
+    <End Role="Cajas" Type="Self.Cajas" Multiplicity="0..1" />
+    <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cajas">
+        <PropertyRef Name="id_Cajas" />
+      </Principal>
+      <Dependent Role="Facturas">
+        <PropertyRef Name="id_Cajas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facturas_Detalle_Descuentos_Facturas_Detalle">
+    <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="1" />
+    <End Role="Facturas_Detalle_Descuentos" Type="Self.Facturas_Detalle_Descuentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facturas_Detalle">
+        <PropertyRef Name="id_Facturas_Detalle" />
+      </Principal>
+      <Dependent Role="Facturas_Detalle_Descuentos">
+        <PropertyRef Name="id_Facturas_Detalle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facturas_Detalle_Facturas">
+    <End Role="Facturas" Type="Self.Facturas" Multiplicity="1" />
+    <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facturas">
+        <PropertyRef Name="id_Facturas" />
+      </Principal>
+      <Dependent Role="Facturas_Detalle">
+        <PropertyRef Name="id_Facturas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facturas_Detalle_Impuestos_Facturas_Detalle">
+    <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="1" />
+    <End Role="Facturas_Detalle_Impuestos" Type="Self.Facturas_Detalle_Impuestos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facturas_Detalle">
+        <PropertyRef Name="id_Facturas_Detalle" />
+      </Principal>
+      <Dependent Role="Facturas_Detalle_Impuestos">
+        <PropertyRef Name="id_Facturas_Detalle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facturas_Detalle_Productos">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+    <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="id_Productos" />
+      </Principal>
+      <Dependent Role="Facturas_Detalle">
+        <PropertyRef Name="id_Productos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facturas_TiposPago_Facturas">
+    <End Role="Facturas" Type="Self.Facturas" Multiplicity="1" />
+    <End Role="Facturas_TiposPago" Type="Self.Facturas_TiposPago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Facturas">
+        <PropertyRef Name="id_Facturas" />
+      </Principal>
+      <Dependent Role="Facturas_TiposPago">
+        <PropertyRef Name="id_Facturas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productos_Productos_Familias">
+    <End Role="Productos_Familias" Type="Self.Productos_Familias" Multiplicity="1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos_Familias">
+        <PropertyRef Name="id_Productos_Familias" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="id_Productos_familias" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Productos_TiposUnidadesMedida">
+    <End Role="TiposUnidadesMedida" Type="Self.TiposUnidadesMedida" Multiplicity="1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposUnidadesMedida">
+        <PropertyRef Name="id_TiposUnidadesMedida" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="id_TiposUnidadesMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sucursales_Empresas">
+    <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+    <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresas">
+        <PropertyRef Name="id_empresas" />
+      </Principal>
+      <Dependent Role="Sucursales">
+        <PropertyRef Name="id_empresas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="deleteProductos_idProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProducto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="getProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getProductos_idProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProducto" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="kss_dbModelStoreContainer">
+    <EntitySet Name="Cajas" EntityType="Self.Cajas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estaciones" EntityType="Self.Estaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Facturas_Detalle" EntityType="Self.Facturas_Detalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Facturas_Detalle_Descuentos" EntityType="Self.Facturas_Detalle_Descuentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Facturas_Detalle_Impuestos" EntityType="Self.Facturas_Detalle_Impuestos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Facturas_TiposPago" EntityType="Self.Facturas_TiposPago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productos_Familias" EntityType="Self.Productos_Familias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sucursales" EntityType="Self.Sucursales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposUnidadesMedida" EntityType="Self.TiposUnidadesMedida" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cajas_Estaciones" Association="Self.FK_Cajas_Estaciones">
+      <End Role="Estaciones" EntitySet="Estaciones" />
+      <End Role="Cajas" EntitySet="Cajas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facturas_Cajas" Association="Self.FK_Facturas_Cajas">
+      <End Role="Cajas" EntitySet="Cajas" />
+      <End Role="Facturas" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facturas_Detalle_Descuentos_Facturas_Detalle" Association="Self.FK_Facturas_Detalle_Descuentos_Facturas_Detalle">
+      <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+      <End Role="Facturas_Detalle_Descuentos" EntitySet="Facturas_Detalle_Descuentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facturas_Detalle_Facturas" Association="Self.FK_Facturas_Detalle_Facturas">
+      <End Role="Facturas" EntitySet="Facturas" />
+      <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facturas_Detalle_Impuestos_Facturas_Detalle" Association="Self.FK_Facturas_Detalle_Impuestos_Facturas_Detalle">
+      <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+      <End Role="Facturas_Detalle_Impuestos" EntitySet="Facturas_Detalle_Impuestos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facturas_Detalle_Productos" Association="Self.FK_Facturas_Detalle_Productos">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facturas_TiposPago_Facturas" Association="Self.FK_Facturas_TiposPago_Facturas">
+      <End Role="Facturas" EntitySet="Facturas" />
+      <End Role="Facturas_TiposPago" EntitySet="Facturas_TiposPago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productos_Productos_Familias" Association="Self.FK_Productos_Productos_Familias">
+      <End Role="Productos_Familias" EntitySet="Productos_Familias" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Productos_TiposUnidadesMedida" Association="Self.FK_Productos_TiposUnidadesMedida">
+      <End Role="TiposUnidadesMedida" EntitySet="TiposUnidadesMedida" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sucursales_Empresas" Association="Self.FK_Sucursales_Empresas">
+      <End Role="Empresas" EntitySet="Empresas" />
+      <End Role="Sucursales" EntitySet="Sucursales" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

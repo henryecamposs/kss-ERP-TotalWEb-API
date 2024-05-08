@@ -1,0 +1,1349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="kss_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cajas">
+          <Key>
+            <PropertyRef Name="id_Cajas" />
+          </Key>
+          <Property Name="id_Cajas" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Estaciones" Type="smallint" />
+          <Property Name="id_ClientesPred" Type="bigint" Nullable="false" />
+          <Property Name="id_TiposPagoPred" Type="smallint" Nullable="false" />
+          <Property Name="id_DefTiposPrecioPred" Type="smallint" Nullable="false" />
+          <Property Name="CantidadUnidadVentaPred" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="esAbierta" Type="bit" />
+          <Property Name="esActivo" Type="bit" />
+          <Property Name="esAgruparItemsIdenticos" Type="bit" />
+          <Property Name="esNroFactura_Person" Type="bit" Nullable="false" />
+          <Property Name="esRemoto" Type="bit" />
+          <Property Name="FechaAnterior" Type="datetime" />
+          <Property Name="FechaApertura" Type="datetime" />
+          <Property Name="MontoApertura" Type="decimal" Precision="38" Scale="4" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" />
+          <Property Name="NroFacturaAnteior_IF" Type="int" Nullable="false" />
+          <Property Name="NroFacturaAnterior" Type="int" Nullable="false" />
+          <Property Name="Serial_IF" Type="text" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="id_empresas" />
+          </Key>
+          <Property Name="id_empresas" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_world_Localidades" Type="bigint" />
+          <Property Name="id_world_Regiones" Type="bigint" Nullable="false" />
+          <Property Name="id_world_Idiomas" Type="bigint" />
+          <Property Name="id_ven_Municipios" Type="smallint" />
+          <Property Name="id_world_Paises" Type="bigint" />
+          <Property Name="id_ven_Parroquias" Type="bigint" />
+          <Property Name="id_tiposComercio" Type="bigint" Nullable="false" />
+          <Property Name="codigoPostal" Type="nvarchar" MaxLength="5" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="100" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="255" />
+          <Property Name="empresa" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="esActivo" Type="bit" />
+          <Property Name="ImagenArchivo" Type="varchar" MaxLength="255" />
+          <Property Name="nit" Type="nvarchar" MaxLength="12" />
+          <Property Name="rif" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="telefonos" Type="nvarchar" MaxLength="11" />
+          <Property Name="telefonosContacto" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="Estaciones">
+          <Key>
+            <PropertyRef Name="id_Estaciones" />
+          </Key>
+          <Property Name="id_Estaciones" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Licencia" Type="smallint" Nullable="false" />
+          <Property Name="id_DefTipos_Estacion" Type="smallint" Nullable="false" />
+          <Property Name="id_DefTipos_PedirDatosCliente" Type="smallint" />
+          <Property Name="id_DefTipos_PrecioPredet" Type="smallint" Nullable="false" />
+          <Property Name="id_DefTipos_DescargaInventario" Type="smallint" />
+          <Property Name="id_Almacenes" Type="smallint" Nullable="false" />
+          <Property Name="esActivo" Type="bit" Nullable="false" />
+          <Property Name="esimprimirEgreso" Type="bit" Nullable="false" />
+          <Property Name="esImprimirFiscal" Type="bit" Nullable="false" />
+          <Property Name="esOffline" Type="bit" Nullable="false" />
+          <Property Name="esPedirCantidad" Type="bit" Nullable="false" />
+          <Property Name="esPreguntarCerrarApp" Type="bit" Nullable="false" />
+          <Property Name="esRemoto" Type="bit" Nullable="false" />
+          <Property Name="esRequierePassword" Type="bit" Nullable="false" />
+          <Property Name="IPEstacion" Type="nvarchar" MaxLength="15" />
+          <Property Name="NombreEquipo" Type="nvarchar" MaxLength="100" />
+          <Property Name="NombreEstacion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="esImprimirNConsumo" Type="bit" Nullable="false" />
+          <Property Name="esPoseeTeclado" Type="bit" Nullable="false" />
+          <Property Name="esPoseeVisorPrecio" Type="bit" Nullable="false" />
+          <Property Name="esPoseeVisorPreciosMonitorExtra" Type="bit" Nullable="false" />
+          <Property Name="esPoseeGaveta" Type="bit" />
+          <Property Name="esPoseeCaptaHuella" Type="bit" />
+          <Property Name="esPoseePantallaTactil" Type="bit" />
+          <Property Name="esPoseeMouse" Type="bit" />
+          <Property Name="esPoseeLectorPOSBanca" Type="bit" />
+          <Property Name="FechaUltimaConfiguracion" Type="datetime" />
+          <Property Name="esCliente_SolicitarEmail" Type="bit" />
+          <Property Name="esCliente_SolicitarRIF" Type="bit" />
+          <Property Name="esCliente_SolicitarTelefono" Type="bit" />
+          <Property Name="esSolicitarEmpleado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="id_Facturas" />
+          </Key>
+          <Property Name="id_Facturas" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Cajas" Type="smallint" />
+          <Property Name="id_Usuarios" Type="smallint" />
+          <Property Name="id_Clientes" Type="bigint" />
+          <Property Name="id_Cajas_Cortes" Type="bigint" />
+          <Property Name="id_DefStatusFactura" Type="smallint" />
+          <Property Name="id_Estaciones_Sesiones" Type="bigint" Nullable="false" />
+          <Property Name="Comentarios" Type="nvarchar" MaxLength="2000" />
+          <Property Name="FechaActual" Type="datetime" Nullable="false" />
+          <Property Name="FechaFactura" Type="datetime" Nullable="false" />
+          <Property Name="nroFactura" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="nroFacturaIF" Type="nvarchar" MaxLength="12" />
+          <Property Name="nroControl" Type="nvarchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="Facturas_Detalle">
+          <Key>
+            <PropertyRef Name="id_Facturas_Detalle" />
+          </Key>
+          <Property Name="id_Facturas_Detalle" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Facturas" Type="bigint" Nullable="false" />
+          <Property Name="id_Productos" Type="bigint" Nullable="false" />
+          <Property Name="id_TiposProducto" Type="smallint" />
+          <Property Name="id_DefTiposPrecio" Type="tinyint" Nullable="false" />
+          <Property Name="nroItem" Type="tinyint" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MontoPrecio" Type="decimal" Precision="38" Scale="4" Nullable="false" />
+          <Property Name="Observacion" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Facturas_Detalle_Descuentos">
+          <Key>
+            <PropertyRef Name="id_Facturas_Detalle_Descuentos" />
+          </Key>
+          <Property Name="id_Facturas_Detalle_Descuentos" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Facturas_Detalle" Type="bigint" Nullable="false" />
+          <Property Name="id_TiposDescuento" Type="smallint" Nullable="false" />
+          <Property Name="TasaValor" Type="decimal" Precision="38" Scale="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facturas_Detalle_Impuestos">
+          <Key>
+            <PropertyRef Name="id_Facturas_Detalle_Impuestos" />
+          </Key>
+          <Property Name="id_Facturas_Detalle_Impuestos" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_TiposImpuestos" Type="smallint" Nullable="false" />
+          <Property Name="id_Facturas_Detalle" Type="bigint" Nullable="false" />
+          <Property Name="Tasa" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facturas_TiposPago">
+          <Key>
+            <PropertyRef Name="id_Facturas_TiposPago" />
+          </Key>
+          <Property Name="id_Facturas_TiposPago" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_TiposBancos" Type="smallint" />
+          <Property Name="id_Facturas" Type="bigint" Nullable="false" />
+          <Property Name="id_TiposPago" Type="smallint" Nullable="false" />
+          <Property Name="DescripicionDocumento" Type="nvarchar" MaxLength="50" />
+          <Property Name="Monto" Type="decimal" Precision="38" Scale="4" Nullable="false" />
+          <Property Name="nroAprobacion" Type="tinyint" />
+          <Property Name="nroDocumento" Type="nvarchar" MaxLength="12" />
+          <Property Name="nroRecibo" Type="nvarchar" MaxLength="12" />
+          <Property Name="FechaActual" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="id_Productos" />
+          </Key>
+          <Property Name="id_Productos" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Productos_familias" Type="smallint" Nullable="false" />
+          <Property Name="id_TiposMarcas" Type="smallint" />
+          <Property Name="id_TiposUnidadesMedida" Type="smallint" Nullable="false" />
+          <Property Name="cantidadUnidadVenta" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="CodigoAdicional" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodigoBarras" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodigoInterno" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="FechaUltimaCompra" Type="datetime" />
+          <Property Name="FechaUltimaModificacion" Type="datetime" />
+          <Property Name="FechaUltimaVenta" Type="datetime" />
+          <Property Name="MargenGananciaPrecio1" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="MargenGananciaPrecio2" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="MargenGananciaPrecio3" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="MontoCostoPromedio" Type="decimal" Precision="38" Scale="4" />
+          <Property Name="MontoPrecio1" Type="decimal" Precision="38" Scale="4" Nullable="false" />
+          <Property Name="MontoPrecio2" Type="decimal" Precision="38" Scale="4" />
+          <Property Name="MontoPrecio3" Type="decimal" Precision="38" Scale="4" />
+          <Property Name="MontoUltimoCosto" Type="decimal" Precision="38" Scale="4" />
+          <Property Name="nDiasGarantia" Type="tinyint" />
+          <Property Name="Producto" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Producto_DescripcionLarga" Type="varchar" MaxLength="255" />
+          <Property Name="Producto_LinkWeb" Type="nvarchar" MaxLength="100" />
+          <Property Name="nStockMaximo" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="nStockMinimo" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="esAvisoStockMinimo" Type="bit" />
+          <Property Name="esAvisoStockMaximo" Type="bit" />
+          <Property Name="MedidaAlto" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="MedidaAncho" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="MedidaLargo" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="esActivo" Type="bit" />
+          <Property Name="esCodigoAlterno" Type="bit" />
+          <Property Name="esCompuesto" Type="bit" />
+          <Property Name="esFavorito" Type="bit" />
+          <Property Name="esGarantia" Type="bit" />
+          <Property Name="esImportado" Type="bit" />
+          <Property Name="esInventario" Type="bit" />
+          <Property Name="esPideComentario" Type="bit" />
+          <Property Name="esPidePeso" Type="bit" />
+          <Property Name="esPidePrecio" Type="bit" />
+          <Property Name="esPideTipoProducto" Type="bit" />
+          <Property Name="esUsoInterno" Type="bit" />
+          <Property Name="esControlVenta" Type="bit" />
+          <Property Name="nCantidadMaxventa" Type="decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="Productos_Familias">
+          <Key>
+            <PropertyRef Name="id_Productos_Familias" />
+          </Key>
+          <Property Name="id_Productos_Familias" Type="smallint" Nullable="false" />
+          <Property Name="FamiliaProducto" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sucursales">
+          <Key>
+            <PropertyRef Name="id_sucursales" />
+          </Key>
+          <Property Name="id_sucursales" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_empresas" Type="bigint" Nullable="false" />
+          <Property Name="id_world_Localidades" Type="bigint" />
+          <Property Name="id_world_Regiones" Type="bigint" Nullable="false" />
+          <Property Name="id_world_Idiomas" Type="bigint" />
+          <Property Name="id_ven_Municipios" Type="smallint" />
+          <Property Name="id_world_Paises" Type="bigint" />
+          <Property Name="id_ven_Parroquias" Type="bigint" />
+          <Property Name="id_tiposComercio" Type="bigint" Nullable="false" />
+          <Property Name="codigoPostal" Type="nvarchar" MaxLength="5" />
+          <Property Name="Contacto" Type="nvarchar" MaxLength="100" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="255" />
+          <Property Name="empresa" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="esActivo" Type="bit" />
+          <Property Name="ImagenArchivo" Type="varchar" MaxLength="255" />
+          <Property Name="nit" Type="nvarchar" MaxLength="12" />
+          <Property Name="rif" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="telefonos" Type="nvarchar" MaxLength="11" />
+          <Property Name="telefonosContacto" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="TiposUnidadesMedida">
+          <Key>
+            <PropertyRef Name="id_TiposUnidadesMedida" />
+          </Key>
+          <Property Name="id_TiposUnidadesMedida" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_world_UnidadesMedida" Type="smallint" />
+          <Property Name="CantidadPredeterminada" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="UnidadMedida" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cajas_Estaciones">
+          <End Role="Estaciones" Type="Self.Estaciones" Multiplicity="0..1" />
+          <End Role="Cajas" Type="Self.Cajas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estaciones">
+              <PropertyRef Name="id_Estaciones" />
+            </Principal>
+            <Dependent Role="Cajas">
+              <PropertyRef Name="id_Estaciones" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Cajas">
+          <End Role="Cajas" Type="Self.Cajas" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cajas">
+              <PropertyRef Name="id_Cajas" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="id_Cajas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Detalle_Descuentos_Facturas_Detalle">
+          <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="1" />
+          <End Role="Facturas_Detalle_Descuentos" Type="Self.Facturas_Detalle_Descuentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas_Detalle">
+              <PropertyRef Name="id_Facturas_Detalle" />
+            </Principal>
+            <Dependent Role="Facturas_Detalle_Descuentos">
+              <PropertyRef Name="id_Facturas_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Detalle_Facturas">
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="1" />
+          <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="id_Facturas" />
+            </Principal>
+            <Dependent Role="Facturas_Detalle">
+              <PropertyRef Name="id_Facturas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Detalle_Impuestos_Facturas_Detalle">
+          <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="1" />
+          <End Role="Facturas_Detalle_Impuestos" Type="Self.Facturas_Detalle_Impuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas_Detalle">
+              <PropertyRef Name="id_Facturas_Detalle" />
+            </Principal>
+            <Dependent Role="Facturas_Detalle_Impuestos">
+              <PropertyRef Name="id_Facturas_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Detalle_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_Productos" />
+            </Principal>
+            <Dependent Role="Facturas_Detalle">
+              <PropertyRef Name="id_Productos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_TiposPago_Facturas">
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="1" />
+          <End Role="Facturas_TiposPago" Type="Self.Facturas_TiposPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="id_Facturas" />
+            </Principal>
+            <Dependent Role="Facturas_TiposPago">
+              <PropertyRef Name="id_Facturas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Productos_Familias">
+          <End Role="Productos_Familias" Type="Self.Productos_Familias" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos_Familias">
+              <PropertyRef Name="id_Productos_Familias" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="id_Productos_familias" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_TiposUnidadesMedida">
+          <End Role="TiposUnidadesMedida" Type="Self.TiposUnidadesMedida" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposUnidadesMedida">
+              <PropertyRef Name="id_TiposUnidadesMedida" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="id_TiposUnidadesMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sucursales_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="id_empresas" />
+            </Principal>
+            <Dependent Role="Sucursales">
+              <PropertyRef Name="id_empresas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="deleteProductos_idProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProducto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="getProductos_idProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProducto" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="kss_dbModelStoreContainer">
+          <EntitySet Name="Cajas" EntityType="Self.Cajas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Estaciones" EntityType="Self.Estaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas_Detalle" EntityType="Self.Facturas_Detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas_Detalle_Descuentos" EntityType="Self.Facturas_Detalle_Descuentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas_Detalle_Impuestos" EntityType="Self.Facturas_Detalle_Impuestos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas_TiposPago" EntityType="Self.Facturas_TiposPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos_Familias" EntityType="Self.Productos_Familias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sucursales" EntityType="Self.Sucursales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposUnidadesMedida" EntityType="Self.TiposUnidadesMedida" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cajas_Estaciones" Association="Self.FK_Cajas_Estaciones">
+            <End Role="Estaciones" EntitySet="Estaciones" />
+            <End Role="Cajas" EntitySet="Cajas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Cajas" Association="Self.FK_Facturas_Cajas">
+            <End Role="Cajas" EntitySet="Cajas" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Detalle_Descuentos_Facturas_Detalle" Association="Self.FK_Facturas_Detalle_Descuentos_Facturas_Detalle">
+            <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+            <End Role="Facturas_Detalle_Descuentos" EntitySet="Facturas_Detalle_Descuentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Detalle_Facturas" Association="Self.FK_Facturas_Detalle_Facturas">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Detalle_Impuestos_Facturas_Detalle" Association="Self.FK_Facturas_Detalle_Impuestos_Facturas_Detalle">
+            <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+            <End Role="Facturas_Detalle_Impuestos" EntitySet="Facturas_Detalle_Impuestos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Detalle_Productos" Association="Self.FK_Facturas_Detalle_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_TiposPago_Facturas" Association="Self.FK_Facturas_TiposPago_Facturas">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="Facturas_TiposPago" EntitySet="Facturas_TiposPago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Productos_Familias" Association="Self.FK_Productos_Productos_Familias">
+            <End Role="Productos_Familias" EntitySet="Productos_Familias" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_TiposUnidadesMedida" Association="Self.FK_Productos_TiposUnidadesMedida">
+            <End Role="TiposUnidadesMedida" EntitySet="TiposUnidadesMedida" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sucursales_Empresas" Association="Self.FK_Sucursales_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Sucursales" EntitySet="Sucursales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="kss_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cajas">
+          <Key>
+            <PropertyRef Name="id_Cajas" />
+          </Key>
+          <Property Name="id_Cajas" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Estaciones" Type="Int16" />
+          <Property Name="id_ClientesPred" Type="Int64" Nullable="false" />
+          <Property Name="id_TiposPagoPred" Type="Int16" Nullable="false" />
+          <Property Name="id_DefTiposPrecioPred" Type="Int16" Nullable="false" />
+          <Property Name="CantidadUnidadVentaPred" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="esAbierta" Type="Boolean" />
+          <Property Name="esActivo" Type="Boolean" />
+          <Property Name="esAgruparItemsIdenticos" Type="Boolean" />
+          <Property Name="esNroFactura_Person" Type="Boolean" Nullable="false" />
+          <Property Name="esRemoto" Type="Boolean" />
+          <Property Name="FechaAnterior" Type="DateTime" Precision="3" />
+          <Property Name="FechaApertura" Type="DateTime" Precision="3" />
+          <Property Name="MontoApertura" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NroFacturaAnteior_IF" Type="Int32" Nullable="false" />
+          <Property Name="NroFacturaAnterior" Type="Int32" Nullable="false" />
+          <Property Name="Serial_IF" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estaciones" Relationship="Self.FK_Cajas_Estaciones" FromRole="Cajas" ToRole="Estaciones" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK_Facturas_Cajas" FromRole="Cajas" ToRole="Facturas" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="id_empresas" />
+          </Key>
+          <Property Name="id_empresas" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_world_Localidades" Type="Int64" />
+          <Property Name="id_world_Regiones" Type="Int64" Nullable="false" />
+          <Property Name="id_world_Idiomas" Type="Int64" />
+          <Property Name="id_ven_Municipios" Type="Int16" />
+          <Property Name="id_world_Paises" Type="Int64" />
+          <Property Name="id_ven_Parroquias" Type="Int64" />
+          <Property Name="id_tiposComercio" Type="Int64" Nullable="false" />
+          <Property Name="codigoPostal" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Contacto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="empresa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="esActivo" Type="Boolean" />
+          <Property Name="ImagenArchivo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nit" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="rif" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefonos" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="telefonosContacto" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sucursales" Relationship="Self.FK_Sucursales_Empresas" FromRole="Empresas" ToRole="Sucursales" />
+        </EntityType>
+        <EntityType Name="Estaciones">
+          <Key>
+            <PropertyRef Name="id_Estaciones" />
+          </Key>
+          <Property Name="id_Estaciones" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Licencia" Type="Int16" Nullable="false" />
+          <Property Name="id_DefTipos_Estacion" Type="Int16" Nullable="false" />
+          <Property Name="id_DefTipos_PedirDatosCliente" Type="Int16" />
+          <Property Name="id_DefTipos_PrecioPredet" Type="Int16" Nullable="false" />
+          <Property Name="id_DefTipos_DescargaInventario" Type="Int16" />
+          <Property Name="id_Almacenes" Type="Int16" Nullable="false" />
+          <Property Name="esActivo" Type="Boolean" Nullable="false" />
+          <Property Name="esimprimirEgreso" Type="Boolean" Nullable="false" />
+          <Property Name="esImprimirFiscal" Type="Boolean" Nullable="false" />
+          <Property Name="esOffline" Type="Boolean" Nullable="false" />
+          <Property Name="esPedirCantidad" Type="Boolean" Nullable="false" />
+          <Property Name="esPreguntarCerrarApp" Type="Boolean" Nullable="false" />
+          <Property Name="esRemoto" Type="Boolean" Nullable="false" />
+          <Property Name="esRequierePassword" Type="Boolean" Nullable="false" />
+          <Property Name="IPEstacion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NombreEquipo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NombreEstacion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="esImprimirNConsumo" Type="Boolean" Nullable="false" />
+          <Property Name="esPoseeTeclado" Type="Boolean" Nullable="false" />
+          <Property Name="esPoseeVisorPrecio" Type="Boolean" Nullable="false" />
+          <Property Name="esPoseeVisorPreciosMonitorExtra" Type="Boolean" Nullable="false" />
+          <Property Name="esPoseeGaveta" Type="Boolean" />
+          <Property Name="esPoseeCaptaHuella" Type="Boolean" />
+          <Property Name="esPoseePantallaTactil" Type="Boolean" />
+          <Property Name="esPoseeMouse" Type="Boolean" />
+          <Property Name="esPoseeLectorPOSBanca" Type="Boolean" />
+          <Property Name="FechaUltimaConfiguracion" Type="DateTime" Precision="3" />
+          <Property Name="esCliente_SolicitarEmail" Type="Boolean" />
+          <Property Name="esCliente_SolicitarRIF" Type="Boolean" />
+          <Property Name="esCliente_SolicitarTelefono" Type="Boolean" />
+          <Property Name="esSolicitarEmpleado" Type="Boolean" />
+          <NavigationProperty Name="Cajas" Relationship="Self.FK_Cajas_Estaciones" FromRole="Estaciones" ToRole="Cajas" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="id_Facturas" />
+          </Key>
+          <Property Name="id_Facturas" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Cajas" Type="Int16" />
+          <Property Name="id_Usuarios" Type="Int16" />
+          <Property Name="id_Clientes" Type="Int64" />
+          <Property Name="id_Cajas_Cortes" Type="Int64" />
+          <Property Name="id_DefStatusFactura" Type="Int16" />
+          <Property Name="id_Estaciones_Sesiones" Type="Int64" Nullable="false" />
+          <Property Name="Comentarios" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="FechaActual" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaFactura" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="nroFactura" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nroFacturaIF" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="nroControl" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cajas" Relationship="Self.FK_Facturas_Cajas" FromRole="Facturas" ToRole="Cajas" />
+          <NavigationProperty Name="Facturas_Detalle" Relationship="Self.FK_Facturas_Detalle_Facturas" FromRole="Facturas" ToRole="Facturas_Detalle" />
+          <NavigationProperty Name="Facturas_TiposPago" Relationship="Self.FK_Facturas_TiposPago_Facturas" FromRole="Facturas" ToRole="Facturas_TiposPago" />
+        </EntityType>
+        <EntityType Name="Facturas_Detalle">
+          <Key>
+            <PropertyRef Name="id_Facturas_Detalle" />
+          </Key>
+          <Property Name="id_Facturas_Detalle" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Facturas" Type="Int64" Nullable="false" />
+          <Property Name="id_Productos" Type="Int64" Nullable="false" />
+          <Property Name="id_TiposProducto" Type="Int16" />
+          <Property Name="id_DefTiposPrecio" Type="Byte" Nullable="false" />
+          <Property Name="nroItem" Type="Byte" Nullable="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MontoPrecio" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK_Facturas_Detalle_Facturas" FromRole="Facturas_Detalle" ToRole="Facturas" />
+          <NavigationProperty Name="Facturas_Detalle_Descuentos" Relationship="Self.FK_Facturas_Detalle_Descuentos_Facturas_Detalle" FromRole="Facturas_Detalle" ToRole="Facturas_Detalle_Descuentos" />
+          <NavigationProperty Name="Facturas_Detalle_Impuestos" Relationship="Self.FK_Facturas_Detalle_Impuestos_Facturas_Detalle" FromRole="Facturas_Detalle" ToRole="Facturas_Detalle_Impuestos" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Facturas_Detalle_Productos" FromRole="Facturas_Detalle" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Facturas_Detalle_Descuentos">
+          <Key>
+            <PropertyRef Name="id_Facturas_Detalle_Descuentos" />
+          </Key>
+          <Property Name="id_Facturas_Detalle_Descuentos" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Facturas_Detalle" Type="Int64" Nullable="false" />
+          <Property Name="id_TiposDescuento" Type="Int16" Nullable="false" />
+          <Property Name="TasaValor" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Facturas_Detalle" Relationship="Self.FK_Facturas_Detalle_Descuentos_Facturas_Detalle" FromRole="Facturas_Detalle_Descuentos" ToRole="Facturas_Detalle" />
+        </EntityType>
+        <EntityType Name="Facturas_Detalle_Impuestos">
+          <Key>
+            <PropertyRef Name="id_Facturas_Detalle_Impuestos" />
+          </Key>
+          <Property Name="id_Facturas_Detalle_Impuestos" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_TiposImpuestos" Type="Int16" Nullable="false" />
+          <Property Name="id_Facturas_Detalle" Type="Int64" Nullable="false" />
+          <Property Name="Tasa" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Facturas_Detalle" Relationship="Self.FK_Facturas_Detalle_Impuestos_Facturas_Detalle" FromRole="Facturas_Detalle_Impuestos" ToRole="Facturas_Detalle" />
+        </EntityType>
+        <EntityType Name="Facturas_TiposPago">
+          <Key>
+            <PropertyRef Name="id_Facturas_TiposPago" />
+          </Key>
+          <Property Name="id_Facturas_TiposPago" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_TiposBancos" Type="Int16" />
+          <Property Name="id_Facturas" Type="Int64" Nullable="false" />
+          <Property Name="id_TiposPago" Type="Int16" Nullable="false" />
+          <Property Name="DescripicionDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Monto" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+          <Property Name="nroAprobacion" Type="Byte" />
+          <Property Name="nroDocumento" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="nroRecibo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="FechaActual" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Facturas" Relationship="Self.FK_Facturas_TiposPago_Facturas" FromRole="Facturas_TiposPago" ToRole="Facturas" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="id_Productos" />
+          </Key>
+          <Property Name="id_Productos" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Productos_familias" Type="Int16" Nullable="false" />
+          <Property Name="id_TiposMarcas" Type="Int16" />
+          <Property Name="id_TiposUnidadesMedida" Type="Int16" Nullable="false" />
+          <Property Name="cantidadUnidadVenta" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="CodigoAdicional" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodigoBarras" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodigoInterno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaUltimaCompra" Type="DateTime" Precision="3" />
+          <Property Name="FechaUltimaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaUltimaVenta" Type="DateTime" Precision="3" />
+          <Property Name="MargenGananciaPrecio1" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="MargenGananciaPrecio2" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="MargenGananciaPrecio3" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="MontoCostoPromedio" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="MontoPrecio1" Type="Decimal" Precision="38" Scale="4" Nullable="false" />
+          <Property Name="MontoPrecio2" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="MontoPrecio3" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="MontoUltimoCosto" Type="Decimal" Precision="38" Scale="4" />
+          <Property Name="nDiasGarantia" Type="Byte" />
+          <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Producto_DescripcionLarga" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Producto_LinkWeb" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="nStockMaximo" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="nStockMinimo" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="esAvisoStockMinimo" Type="Boolean" />
+          <Property Name="esAvisoStockMaximo" Type="Boolean" />
+          <Property Name="MedidaAlto" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="MedidaAncho" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="MedidaLargo" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="esActivo" Type="Boolean" />
+          <Property Name="esCodigoAlterno" Type="Boolean" />
+          <Property Name="esCompuesto" Type="Boolean" />
+          <Property Name="esFavorito" Type="Boolean" />
+          <Property Name="esGarantia" Type="Boolean" />
+          <Property Name="esImportado" Type="Boolean" />
+          <Property Name="esInventario" Type="Boolean" />
+          <Property Name="esPideComentario" Type="Boolean" />
+          <Property Name="esPidePeso" Type="Boolean" />
+          <Property Name="esPidePrecio" Type="Boolean" />
+          <Property Name="esPideTipoProducto" Type="Boolean" />
+          <Property Name="esUsoInterno" Type="Boolean" />
+          <Property Name="esControlVenta" Type="Boolean" />
+          <Property Name="nCantidadMaxventa" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="Facturas_Detalle" Relationship="Self.FK_Facturas_Detalle_Productos" FromRole="Productos" ToRole="Facturas_Detalle" />
+          <NavigationProperty Name="Productos_Familias" Relationship="Self.FK_Productos_Productos_Familias" FromRole="Productos" ToRole="Productos_Familias" />
+          <NavigationProperty Name="TiposUnidadesMedida" Relationship="Self.FK_Productos_TiposUnidadesMedida" FromRole="Productos" ToRole="TiposUnidadesMedida" />
+        </EntityType>
+        <EntityType Name="Productos_Familias">
+          <Key>
+            <PropertyRef Name="id_Productos_Familias" />
+          </Key>
+          <Property Name="id_Productos_Familias" Type="Int16" Nullable="false" />
+          <Property Name="FamiliaProducto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Productos_Familias" FromRole="Productos_Familias" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Sucursales">
+          <Key>
+            <PropertyRef Name="id_sucursales" />
+          </Key>
+          <Property Name="id_sucursales" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_empresas" Type="Int64" Nullable="false" />
+          <Property Name="id_world_Localidades" Type="Int64" />
+          <Property Name="id_world_Regiones" Type="Int64" Nullable="false" />
+          <Property Name="id_world_Idiomas" Type="Int64" />
+          <Property Name="id_ven_Municipios" Type="Int16" />
+          <Property Name="id_world_Paises" Type="Int64" />
+          <Property Name="id_ven_Parroquias" Type="Int64" />
+          <Property Name="id_tiposComercio" Type="Int64" Nullable="false" />
+          <Property Name="codigoPostal" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Contacto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="empresa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="esActivo" Type="Boolean" />
+          <Property Name="ImagenArchivo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nit" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="rif" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefonos" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="telefonosContacto" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Empresas" Relationship="Self.FK_Sucursales_Empresas" FromRole="Sucursales" ToRole="Empresas" />
+        </EntityType>
+        <EntityType Name="TiposUnidadesMedida">
+          <Key>
+            <PropertyRef Name="id_TiposUnidadesMedida" />
+          </Key>
+          <Property Name="id_TiposUnidadesMedida" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_world_UnidadesMedida" Type="Int16" />
+          <Property Name="CantidadPredeterminada" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="UnidadMedida" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_TiposUnidadesMedida" FromRole="TiposUnidadesMedida" ToRole="Productos" />
+        </EntityType>
+        <Association Name="FK_Cajas_Estaciones">
+          <End Role="Estaciones" Type="Self.Estaciones" Multiplicity="0..1" />
+          <End Role="Cajas" Type="Self.Cajas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estaciones">
+              <PropertyRef Name="id_Estaciones" />
+            </Principal>
+            <Dependent Role="Cajas">
+              <PropertyRef Name="id_Estaciones" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Cajas">
+          <End Role="Cajas" Type="Self.Cajas" Multiplicity="0..1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cajas">
+              <PropertyRef Name="id_Cajas" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="id_Cajas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sucursales_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="Sucursales" Type="Self.Sucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="id_empresas" />
+            </Principal>
+            <Dependent Role="Sucursales">
+              <PropertyRef Name="id_empresas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Detalle_Facturas">
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="1" />
+          <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="id_Facturas" />
+            </Principal>
+            <Dependent Role="Facturas_Detalle">
+              <PropertyRef Name="id_Facturas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_TiposPago_Facturas">
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="1" />
+          <End Role="Facturas_TiposPago" Type="Self.Facturas_TiposPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas">
+              <PropertyRef Name="id_Facturas" />
+            </Principal>
+            <Dependent Role="Facturas_TiposPago">
+              <PropertyRef Name="id_Facturas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Detalle_Descuentos_Facturas_Detalle">
+          <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="1" />
+          <End Role="Facturas_Detalle_Descuentos" Type="Self.Facturas_Detalle_Descuentos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas_Detalle">
+              <PropertyRef Name="id_Facturas_Detalle" />
+            </Principal>
+            <Dependent Role="Facturas_Detalle_Descuentos">
+              <PropertyRef Name="id_Facturas_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Detalle_Impuestos_Facturas_Detalle">
+          <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="1" />
+          <End Role="Facturas_Detalle_Impuestos" Type="Self.Facturas_Detalle_Impuestos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facturas_Detalle">
+              <PropertyRef Name="id_Facturas_Detalle" />
+            </Principal>
+            <Dependent Role="Facturas_Detalle_Impuestos">
+              <PropertyRef Name="id_Facturas_Detalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facturas_Detalle_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Facturas_Detalle" Type="Self.Facturas_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="id_Productos" />
+            </Principal>
+            <Dependent Role="Facturas_Detalle">
+              <PropertyRef Name="id_Productos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_Productos_Familias">
+          <End Role="Productos_Familias" Type="Self.Productos_Familias" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos_Familias">
+              <PropertyRef Name="id_Productos_Familias" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="id_Productos_familias" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Productos_TiposUnidadesMedida">
+          <End Role="TiposUnidadesMedida" Type="Self.TiposUnidadesMedida" Multiplicity="1" />
+          <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposUnidadesMedida">
+              <PropertyRef Name="id_TiposUnidadesMedida" />
+            </Principal>
+            <Dependent Role="Productos">
+              <PropertyRef Name="id_TiposUnidadesMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="kss_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cajas" EntityType="Self.Cajas" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" />
+          <EntitySet Name="Estaciones" EntityType="Self.Estaciones" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" />
+          <EntitySet Name="Facturas_Detalle" EntityType="Self.Facturas_Detalle" />
+          <EntitySet Name="Facturas_Detalle_Descuentos" EntityType="Self.Facturas_Detalle_Descuentos" />
+          <EntitySet Name="Facturas_Detalle_Impuestos" EntityType="Self.Facturas_Detalle_Impuestos" />
+          <EntitySet Name="Facturas_TiposPago" EntityType="Self.Facturas_TiposPago" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Productos_Familias" EntityType="Self.Productos_Familias" />
+          <EntitySet Name="Sucursales" EntityType="Self.Sucursales" />
+          <EntitySet Name="TiposUnidadesMedida" EntityType="Self.TiposUnidadesMedida" />
+          <AssociationSet Name="FK_Cajas_Estaciones" Association="Self.FK_Cajas_Estaciones">
+            <End Role="Estaciones" EntitySet="Estaciones" />
+            <End Role="Cajas" EntitySet="Cajas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Cajas" Association="Self.FK_Facturas_Cajas">
+            <End Role="Cajas" EntitySet="Cajas" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sucursales_Empresas" Association="Self.FK_Sucursales_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Sucursales" EntitySet="Sucursales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Detalle_Facturas" Association="Self.FK_Facturas_Detalle_Facturas">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_TiposPago_Facturas" Association="Self.FK_Facturas_TiposPago_Facturas">
+            <End Role="Facturas" EntitySet="Facturas" />
+            <End Role="Facturas_TiposPago" EntitySet="Facturas_TiposPago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Detalle_Descuentos_Facturas_Detalle" Association="Self.FK_Facturas_Detalle_Descuentos_Facturas_Detalle">
+            <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+            <End Role="Facturas_Detalle_Descuentos" EntitySet="Facturas_Detalle_Descuentos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Detalle_Impuestos_Facturas_Detalle" Association="Self.FK_Facturas_Detalle_Impuestos_Facturas_Detalle">
+            <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+            <End Role="Facturas_Detalle_Impuestos" EntitySet="Facturas_Detalle_Impuestos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facturas_Detalle_Productos" Association="Self.FK_Facturas_Detalle_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Facturas_Detalle" EntitySet="Facturas_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_Productos_Familias" Association="Self.FK_Productos_Productos_Familias">
+            <End Role="Productos_Familias" EntitySet="Productos_Familias" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Productos_TiposUnidadesMedida" Association="Self.FK_Productos_TiposUnidadesMedida">
+            <End Role="TiposUnidadesMedida" EntitySet="TiposUnidadesMedida" />
+            <End Role="Productos" EntitySet="Productos" />
+          </AssociationSet>
+          <FunctionImport Name="deleteProductos_idProducto">
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getProductos" ReturnType="Collection(kss_dbModel.getProductos_Result)" />
+          <FunctionImport Name="getProductos_idProducto" ReturnType="Collection(kss_dbModel.getProductos_idProducto_Result)">
+            <Parameter Name="idProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="getProductos_Result">
+          <Property Type="Int64" Name="id_Productos" Nullable="false" />
+          <Property Type="Int16" Name="id_Productos_familias" Nullable="false" />
+          <Property Type="Int16" Name="id_TiposMarcas" Nullable="true" />
+          <Property Type="Int16" Name="id_TiposUnidadesMedida" Nullable="false" />
+          <Property Type="Decimal" Name="cantidadUnidadVenta" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="CodigoAdicional" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CodigoBarras" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CodigoInterno" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaUltimaCompra" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaUltimaModificacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaUltimaVenta" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="MargenGananciaPrecio1" Nullable="true" Precision="3" Scale="2" />
+          <Property Type="Decimal" Name="MargenGananciaPrecio2" Nullable="true" Precision="3" Scale="2" />
+          <Property Type="Decimal" Name="MargenGananciaPrecio3" Nullable="true" Precision="3" Scale="2" />
+          <Property Type="Decimal" Name="MontoCostoPromedio" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MontoPrecio1" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MontoPrecio2" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MontoPrecio3" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MontoUltimoCosto" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Byte" Name="nDiasGarantia" Nullable="true" />
+          <Property Type="String" Name="Producto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Producto_DescripcionLarga" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Producto_LinkWeb" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="nStockMaximo" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="nStockMinimo" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Boolean" Name="esAvisoStockMinimo" Nullable="true" />
+          <Property Type="Boolean" Name="esAvisoStockMaximo" Nullable="true" />
+          <Property Type="Decimal" Name="MedidaAlto" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="MedidaAncho" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="MedidaLargo" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Boolean" Name="esActivo" Nullable="true" />
+          <Property Type="Boolean" Name="esCodigoAlterno" Nullable="true" />
+          <Property Type="Boolean" Name="esCompuesto" Nullable="true" />
+          <Property Type="Boolean" Name="esFavorito" Nullable="true" />
+          <Property Type="Boolean" Name="esGarantia" Nullable="true" />
+          <Property Type="Boolean" Name="esImportado" Nullable="true" />
+          <Property Type="Boolean" Name="esInventario" Nullable="true" />
+          <Property Type="Boolean" Name="esPideComentario" Nullable="true" />
+          <Property Type="Boolean" Name="esPidePeso" Nullable="true" />
+          <Property Type="Boolean" Name="esPidePrecio" Nullable="true" />
+          <Property Type="Boolean" Name="esPideTipoProducto" Nullable="true" />
+          <Property Type="Boolean" Name="esUsoInterno" Nullable="true" />
+          <Property Type="Boolean" Name="esControlVenta" Nullable="true" />
+          <Property Type="Decimal" Name="nCantidadMaxventa" Nullable="true" Precision="5" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="getProductos_idProducto_Result">
+          <Property Type="Int64" Name="id_Productos" Nullable="false" />
+          <Property Type="Int16" Name="id_Productos_familias" Nullable="false" />
+          <Property Type="Int16" Name="id_TiposMarcas" Nullable="true" />
+          <Property Type="Int16" Name="id_TiposUnidadesMedida" Nullable="false" />
+          <Property Type="Decimal" Name="cantidadUnidadVenta" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="String" Name="CodigoAdicional" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CodigoBarras" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CodigoInterno" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaUltimaCompra" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaUltimaModificacion" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaUltimaVenta" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="MargenGananciaPrecio1" Nullable="true" Precision="3" Scale="2" />
+          <Property Type="Decimal" Name="MargenGananciaPrecio2" Nullable="true" Precision="3" Scale="2" />
+          <Property Type="Decimal" Name="MargenGananciaPrecio3" Nullable="true" Precision="3" Scale="2" />
+          <Property Type="Decimal" Name="MontoCostoPromedio" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MontoPrecio1" Nullable="false" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MontoPrecio2" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MontoPrecio3" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Decimal" Name="MontoUltimoCosto" Nullable="true" Precision="38" Scale="4" />
+          <Property Type="Byte" Name="nDiasGarantia" Nullable="true" />
+          <Property Type="String" Name="Producto" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Producto_DescripcionLarga" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Producto_LinkWeb" Nullable="true" MaxLength="100" />
+          <Property Type="Decimal" Name="nStockMaximo" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="nStockMinimo" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Boolean" Name="esAvisoStockMinimo" Nullable="true" />
+          <Property Type="Boolean" Name="esAvisoStockMaximo" Nullable="true" />
+          <Property Type="Decimal" Name="MedidaAlto" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="MedidaAncho" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Decimal" Name="MedidaLargo" Nullable="true" Precision="5" Scale="2" />
+          <Property Type="Boolean" Name="esActivo" Nullable="true" />
+          <Property Type="Boolean" Name="esCodigoAlterno" Nullable="true" />
+          <Property Type="Boolean" Name="esCompuesto" Nullable="true" />
+          <Property Type="Boolean" Name="esFavorito" Nullable="true" />
+          <Property Type="Boolean" Name="esGarantia" Nullable="true" />
+          <Property Type="Boolean" Name="esImportado" Nullable="true" />
+          <Property Type="Boolean" Name="esInventario" Nullable="true" />
+          <Property Type="Boolean" Name="esPideComentario" Nullable="true" />
+          <Property Type="Boolean" Name="esPidePeso" Nullable="true" />
+          <Property Type="Boolean" Name="esPidePrecio" Nullable="true" />
+          <Property Type="Boolean" Name="esPideTipoProducto" Nullable="true" />
+          <Property Type="Boolean" Name="esUsoInterno" Nullable="true" />
+          <Property Type="Boolean" Name="esControlVenta" Nullable="true" />
+          <Property Type="Decimal" Name="nCantidadMaxventa" Nullable="true" Precision="5" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="kss_dbModelStoreContainer" CdmEntityContainer="kss_dbEntities">
+          <EntitySetMapping Name="Cajas">
+            <EntityTypeMapping TypeName="kss_dbModel.Cajas">
+              <MappingFragment StoreEntitySet="Cajas">
+                <ScalarProperty Name="id_Cajas" ColumnName="id_Cajas" />
+                <ScalarProperty Name="id_Estaciones" ColumnName="id_Estaciones" />
+                <ScalarProperty Name="id_ClientesPred" ColumnName="id_ClientesPred" />
+                <ScalarProperty Name="id_TiposPagoPred" ColumnName="id_TiposPagoPred" />
+                <ScalarProperty Name="id_DefTiposPrecioPred" ColumnName="id_DefTiposPrecioPred" />
+                <ScalarProperty Name="CantidadUnidadVentaPred" ColumnName="CantidadUnidadVentaPred" />
+                <ScalarProperty Name="esAbierta" ColumnName="esAbierta" />
+                <ScalarProperty Name="esActivo" ColumnName="esActivo" />
+                <ScalarProperty Name="esAgruparItemsIdenticos" ColumnName="esAgruparItemsIdenticos" />
+                <ScalarProperty Name="esNroFactura_Person" ColumnName="esNroFactura_Person" />
+                <ScalarProperty Name="esRemoto" ColumnName="esRemoto" />
+                <ScalarProperty Name="FechaAnterior" ColumnName="FechaAnterior" />
+                <ScalarProperty Name="FechaApertura" ColumnName="FechaApertura" />
+                <ScalarProperty Name="MontoApertura" ColumnName="MontoApertura" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="NroFacturaAnteior_IF" ColumnName="NroFacturaAnteior_IF" />
+                <ScalarProperty Name="NroFacturaAnterior" ColumnName="NroFacturaAnterior" />
+                <ScalarProperty Name="Serial_IF" ColumnName="Serial_IF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="kss_dbModel.Empresas">
+              <MappingFragment StoreEntitySet="Empresas">
+                <ScalarProperty Name="id_empresas" ColumnName="id_empresas" />
+                <ScalarProperty Name="id_world_Localidades" ColumnName="id_world_Localidades" />
+                <ScalarProperty Name="id_world_Regiones" ColumnName="id_world_Regiones" />
+                <ScalarProperty Name="id_world_Idiomas" ColumnName="id_world_Idiomas" />
+                <ScalarProperty Name="id_ven_Municipios" ColumnName="id_ven_Municipios" />
+                <ScalarProperty Name="id_world_Paises" ColumnName="id_world_Paises" />
+                <ScalarProperty Name="id_ven_Parroquias" ColumnName="id_ven_Parroquias" />
+                <ScalarProperty Name="id_tiposComercio" ColumnName="id_tiposComercio" />
+                <ScalarProperty Name="codigoPostal" ColumnName="codigoPostal" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="esActivo" ColumnName="esActivo" />
+                <ScalarProperty Name="ImagenArchivo" ColumnName="ImagenArchivo" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="rif" ColumnName="rif" />
+                <ScalarProperty Name="telefonos" ColumnName="telefonos" />
+                <ScalarProperty Name="telefonosContacto" ColumnName="telefonosContacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Estaciones">
+            <EntityTypeMapping TypeName="kss_dbModel.Estaciones">
+              <MappingFragment StoreEntitySet="Estaciones">
+                <ScalarProperty Name="id_Estaciones" ColumnName="id_Estaciones" />
+                <ScalarProperty Name="id_Licencia" ColumnName="id_Licencia" />
+                <ScalarProperty Name="id_DefTipos_Estacion" ColumnName="id_DefTipos_Estacion" />
+                <ScalarProperty Name="id_DefTipos_PedirDatosCliente" ColumnName="id_DefTipos_PedirDatosCliente" />
+                <ScalarProperty Name="id_DefTipos_PrecioPredet" ColumnName="id_DefTipos_PrecioPredet" />
+                <ScalarProperty Name="id_DefTipos_DescargaInventario" ColumnName="id_DefTipos_DescargaInventario" />
+                <ScalarProperty Name="id_Almacenes" ColumnName="id_Almacenes" />
+                <ScalarProperty Name="esActivo" ColumnName="esActivo" />
+                <ScalarProperty Name="esimprimirEgreso" ColumnName="esimprimirEgreso" />
+                <ScalarProperty Name="esImprimirFiscal" ColumnName="esImprimirFiscal" />
+                <ScalarProperty Name="esOffline" ColumnName="esOffline" />
+                <ScalarProperty Name="esPedirCantidad" ColumnName="esPedirCantidad" />
+                <ScalarProperty Name="esPreguntarCerrarApp" ColumnName="esPreguntarCerrarApp" />
+                <ScalarProperty Name="esRemoto" ColumnName="esRemoto" />
+                <ScalarProperty Name="esRequierePassword" ColumnName="esRequierePassword" />
+                <ScalarProperty Name="IPEstacion" ColumnName="IPEstacion" />
+                <ScalarProperty Name="NombreEquipo" ColumnName="NombreEquipo" />
+                <ScalarProperty Name="NombreEstacion" ColumnName="NombreEstacion" />
+                <ScalarProperty Name="esImprimirNConsumo" ColumnName="esImprimirNConsumo" />
+                <ScalarProperty Name="esPoseeTeclado" ColumnName="esPoseeTeclado" />
+                <ScalarProperty Name="esPoseeVisorPrecio" ColumnName="esPoseeVisorPrecio" />
+                <ScalarProperty Name="esPoseeVisorPreciosMonitorExtra" ColumnName="esPoseeVisorPreciosMonitorExtra" />
+                <ScalarProperty Name="esPoseeGaveta" ColumnName="esPoseeGaveta" />
+                <ScalarProperty Name="esPoseeCaptaHuella" ColumnName="esPoseeCaptaHuella" />
+                <ScalarProperty Name="esPoseePantallaTactil" ColumnName="esPoseePantallaTactil" />
+                <ScalarProperty Name="esPoseeMouse" ColumnName="esPoseeMouse" />
+                <ScalarProperty Name="esPoseeLectorPOSBanca" ColumnName="esPoseeLectorPOSBanca" />
+                <ScalarProperty Name="FechaUltimaConfiguracion" ColumnName="FechaUltimaConfiguracion" />
+                <ScalarProperty Name="esCliente_SolicitarEmail" ColumnName="esCliente_SolicitarEmail" />
+                <ScalarProperty Name="esCliente_SolicitarRIF" ColumnName="esCliente_SolicitarRIF" />
+                <ScalarProperty Name="esCliente_SolicitarTelefono" ColumnName="esCliente_SolicitarTelefono" />
+                <ScalarProperty Name="esSolicitarEmpleado" ColumnName="esSolicitarEmpleado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="kss_dbModel.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="id_Facturas" ColumnName="id_Facturas" />
+                <ScalarProperty Name="id_Cajas" ColumnName="id_Cajas" />
+                <ScalarProperty Name="id_Usuarios" ColumnName="id_Usuarios" />
+                <ScalarProperty Name="id_Clientes" ColumnName="id_Clientes" />
+                <ScalarProperty Name="id_Cajas_Cortes" ColumnName="id_Cajas_Cortes" />
+                <ScalarProperty Name="id_DefStatusFactura" ColumnName="id_DefStatusFactura" />
+                <ScalarProperty Name="id_Estaciones_Sesiones" ColumnName="id_Estaciones_Sesiones" />
+                <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
+                <ScalarProperty Name="FechaActual" ColumnName="FechaActual" />
+                <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
+                <ScalarProperty Name="nroFactura" ColumnName="nroFactura" />
+                <ScalarProperty Name="nroFacturaIF" ColumnName="nroFacturaIF" />
+                <ScalarProperty Name="nroControl" ColumnName="nroControl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas_Detalle">
+            <EntityTypeMapping TypeName="kss_dbModel.Facturas_Detalle">
+              <MappingFragment StoreEntitySet="Facturas_Detalle">
+                <ScalarProperty Name="id_Facturas_Detalle" ColumnName="id_Facturas_Detalle" />
+                <ScalarProperty Name="id_Facturas" ColumnName="id_Facturas" />
+                <ScalarProperty Name="id_Productos" ColumnName="id_Productos" />
+                <ScalarProperty Name="id_TiposProducto" ColumnName="id_TiposProducto" />
+                <ScalarProperty Name="id_DefTiposPrecio" ColumnName="id_DefTiposPrecio" />
+                <ScalarProperty Name="nroItem" ColumnName="nroItem" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="MontoPrecio" ColumnName="MontoPrecio" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas_Detalle_Descuentos">
+            <EntityTypeMapping TypeName="kss_dbModel.Facturas_Detalle_Descuentos">
+              <MappingFragment StoreEntitySet="Facturas_Detalle_Descuentos">
+                <ScalarProperty Name="id_Facturas_Detalle_Descuentos" ColumnName="id_Facturas_Detalle_Descuentos" />
+                <ScalarProperty Name="id_Facturas_Detalle" ColumnName="id_Facturas_Detalle" />
+                <ScalarProperty Name="id_TiposDescuento" ColumnName="id_TiposDescuento" />
+                <ScalarProperty Name="TasaValor" ColumnName="TasaValor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas_Detalle_Impuestos">
+            <EntityTypeMapping TypeName="kss_dbModel.Facturas_Detalle_Impuestos">
+              <MappingFragment StoreEntitySet="Facturas_Detalle_Impuestos">
+                <ScalarProperty Name="id_Facturas_Detalle_Impuestos" ColumnName="id_Facturas_Detalle_Impuestos" />
+                <ScalarProperty Name="id_TiposImpuestos" ColumnName="id_TiposImpuestos" />
+                <ScalarProperty Name="id_Facturas_Detalle" ColumnName="id_Facturas_Detalle" />
+                <ScalarProperty Name="Tasa" ColumnName="Tasa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas_TiposPago">
+            <EntityTypeMapping TypeName="kss_dbModel.Facturas_TiposPago">
+              <MappingFragment StoreEntitySet="Facturas_TiposPago">
+                <ScalarProperty Name="id_Facturas_TiposPago" ColumnName="id_Facturas_TiposPago" />
+                <ScalarProperty Name="id_TiposBancos" ColumnName="id_TiposBancos" />
+                <ScalarProperty Name="id_Facturas" ColumnName="id_Facturas" />
+                <ScalarProperty Name="id_TiposPago" ColumnName="id_TiposPago" />
+                <ScalarProperty Name="DescripicionDocumento" ColumnName="DescripicionDocumento" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="nroAprobacion" ColumnName="nroAprobacion" />
+                <ScalarProperty Name="nroDocumento" ColumnName="nroDocumento" />
+                <ScalarProperty Name="nroRecibo" ColumnName="nroRecibo" />
+                <ScalarProperty Name="FechaActual" ColumnName="FechaActual" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="kss_dbModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="id_Productos" ColumnName="id_Productos" />
+                <ScalarProperty Name="id_Productos_familias" ColumnName="id_Productos_familias" />
+                <ScalarProperty Name="id_TiposMarcas" ColumnName="id_TiposMarcas" />
+                <ScalarProperty Name="id_TiposUnidadesMedida" ColumnName="id_TiposUnidadesMedida" />
+                <ScalarProperty Name="cantidadUnidadVenta" ColumnName="cantidadUnidadVenta" />
+                <ScalarProperty Name="CodigoAdicional" ColumnName="CodigoAdicional" />
+                <ScalarProperty Name="CodigoBarras" ColumnName="CodigoBarras" />
+                <ScalarProperty Name="CodigoInterno" ColumnName="CodigoInterno" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaUltimaCompra" ColumnName="FechaUltimaCompra" />
+                <ScalarProperty Name="FechaUltimaModificacion" ColumnName="FechaUltimaModificacion" />
+                <ScalarProperty Name="FechaUltimaVenta" ColumnName="FechaUltimaVenta" />
+                <ScalarProperty Name="MargenGananciaPrecio1" ColumnName="MargenGananciaPrecio1" />
+                <ScalarProperty Name="MargenGananciaPrecio2" ColumnName="MargenGananciaPrecio2" />
+                <ScalarProperty Name="MargenGananciaPrecio3" ColumnName="MargenGananciaPrecio3" />
+                <ScalarProperty Name="MontoCostoPromedio" ColumnName="MontoCostoPromedio" />
+                <ScalarProperty Name="MontoPrecio1" ColumnName="MontoPrecio1" />
+                <ScalarProperty Name="MontoPrecio2" ColumnName="MontoPrecio2" />
+                <ScalarProperty Name="MontoPrecio3" ColumnName="MontoPrecio3" />
+                <ScalarProperty Name="MontoUltimoCosto" ColumnName="MontoUltimoCosto" />
+                <ScalarProperty Name="nDiasGarantia" ColumnName="nDiasGarantia" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Producto_DescripcionLarga" ColumnName="Producto_DescripcionLarga" />
+                <ScalarProperty Name="Producto_LinkWeb" ColumnName="Producto_LinkWeb" />
+                <ScalarProperty Name="nStockMaximo" ColumnName="nStockMaximo" />
+                <ScalarProperty Name="nStockMinimo" ColumnName="nStockMinimo" />
+                <ScalarProperty Name="esAvisoStockMinimo" ColumnName="esAvisoStockMinimo" />
+                <ScalarProperty Name="esAvisoStockMaximo" ColumnName="esAvisoStockMaximo" />
+                <ScalarProperty Name="MedidaAlto" ColumnName="MedidaAlto" />
+                <ScalarProperty Name="MedidaAncho" ColumnName="MedidaAncho" />
+                <ScalarProperty Name="MedidaLargo" ColumnName="MedidaLargo" />
+                <ScalarProperty Name="esActivo" ColumnName="esActivo" />
+                <ScalarProperty Name="esCodigoAlterno" ColumnName="esCodigoAlterno" />
+                <ScalarProperty Name="esCompuesto" ColumnName="esCompuesto" />
+                <ScalarProperty Name="esFavorito" ColumnName="esFavorito" />
+                <ScalarProperty Name="esGarantia" ColumnName="esGarantia" />
+                <ScalarProperty Name="esImportado" ColumnName="esImportado" />
+                <ScalarProperty Name="esInventario" ColumnName="esInventario" />
+                <ScalarProperty Name="esPideComentario" ColumnName="esPideComentario" />
+                <ScalarProperty Name="esPidePeso" ColumnName="esPidePeso" />
+                <ScalarProperty Name="esPidePrecio" ColumnName="esPidePrecio" />
+                <ScalarProperty Name="esPideTipoProducto" ColumnName="esPideTipoProducto" />
+                <ScalarProperty Name="esUsoInterno" ColumnName="esUsoInterno" />
+                <ScalarProperty Name="esControlVenta" ColumnName="esControlVenta" />
+                <ScalarProperty Name="nCantidadMaxventa" ColumnName="nCantidadMaxventa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos_Familias">
+            <EntityTypeMapping TypeName="kss_dbModel.Productos_Familias">
+              <MappingFragment StoreEntitySet="Productos_Familias">
+                <ScalarProperty Name="id_Productos_Familias" ColumnName="id_Productos_Familias" />
+                <ScalarProperty Name="FamiliaProducto" ColumnName="FamiliaProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursales">
+            <EntityTypeMapping TypeName="kss_dbModel.Sucursales">
+              <MappingFragment StoreEntitySet="Sucursales">
+                <ScalarProperty Name="id_sucursales" ColumnName="id_sucursales" />
+                <ScalarProperty Name="id_empresas" ColumnName="id_empresas" />
+                <ScalarProperty Name="id_world_Localidades" ColumnName="id_world_Localidades" />
+                <ScalarProperty Name="id_world_Regiones" ColumnName="id_world_Regiones" />
+                <ScalarProperty Name="id_world_Idiomas" ColumnName="id_world_Idiomas" />
+                <ScalarProperty Name="id_ven_Municipios" ColumnName="id_ven_Municipios" />
+                <ScalarProperty Name="id_world_Paises" ColumnName="id_world_Paises" />
+                <ScalarProperty Name="id_ven_Parroquias" ColumnName="id_ven_Parroquias" />
+                <ScalarProperty Name="id_tiposComercio" ColumnName="id_tiposComercio" />
+                <ScalarProperty Name="codigoPostal" ColumnName="codigoPostal" />
+                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="empresa" ColumnName="empresa" />
+                <ScalarProperty Name="esActivo" ColumnName="esActivo" />
+                <ScalarProperty Name="ImagenArchivo" ColumnName="ImagenArchivo" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="rif" ColumnName="rif" />
+                <ScalarProperty Name="telefonos" ColumnName="telefonos" />
+                <ScalarProperty Name="telefonosContacto" ColumnName="telefonosContacto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposUnidadesMedida">
+            <EntityTypeMapping TypeName="kss_dbModel.TiposUnidadesMedida">
+              <MappingFragment StoreEntitySet="TiposUnidadesMedida">
+                <ScalarProperty Name="id_TiposUnidadesMedida" ColumnName="id_TiposUnidadesMedida" />
+                <ScalarProperty Name="id_world_UnidadesMedida" ColumnName="id_world_UnidadesMedida" />
+                <ScalarProperty Name="CantidadPredeterminada" ColumnName="CantidadPredeterminada" />
+                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="deleteProductos_idProducto" FunctionName="kss_dbModel.Store.deleteProductos_idProducto" />
+          <FunctionImportMapping FunctionImportName="getProductos" FunctionName="kss_dbModel.Store.getProductos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kss_dbModel.getProductos_Result">
+                <ScalarProperty Name="id_Productos" ColumnName="id_Productos" />
+                <ScalarProperty Name="id_Productos_familias" ColumnName="id_Productos_familias" />
+                <ScalarProperty Name="id_TiposMarcas" ColumnName="id_TiposMarcas" />
+                <ScalarProperty Name="id_TiposUnidadesMedida" ColumnName="id_TiposUnidadesMedida" />
+                <ScalarProperty Name="cantidadUnidadVenta" ColumnName="cantidadUnidadVenta" />
+                <ScalarProperty Name="CodigoAdicional" ColumnName="CodigoAdicional" />
+                <ScalarProperty Name="CodigoBarras" ColumnName="CodigoBarras" />
+                <ScalarProperty Name="CodigoInterno" ColumnName="CodigoInterno" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaUltimaCompra" ColumnName="FechaUltimaCompra" />
+                <ScalarProperty Name="FechaUltimaModificacion" ColumnName="FechaUltimaModificacion" />
+                <ScalarProperty Name="FechaUltimaVenta" ColumnName="FechaUltimaVenta" />
+                <ScalarProperty Name="MargenGananciaPrecio1" ColumnName="MargenGananciaPrecio1" />
+                <ScalarProperty Name="MargenGananciaPrecio2" ColumnName="MargenGananciaPrecio2" />
+                <ScalarProperty Name="MargenGananciaPrecio3" ColumnName="MargenGananciaPrecio3" />
+                <ScalarProperty Name="MontoCostoPromedio" ColumnName="MontoCostoPromedio" />
+                <ScalarProperty Name="MontoPrecio1" ColumnName="MontoPrecio1" />
+                <ScalarProperty Name="MontoPrecio2" ColumnName="MontoPrecio2" />
+                <ScalarProperty Name="MontoPrecio3" ColumnName="MontoPrecio3" />
+                <ScalarProperty Name="MontoUltimoCosto" ColumnName="MontoUltimoCosto" />
+                <ScalarProperty Name="nDiasGarantia" ColumnName="nDiasGarantia" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Producto_DescripcionLarga" ColumnName="Producto_DescripcionLarga" />
+                <ScalarProperty Name="Producto_LinkWeb" ColumnName="Producto_LinkWeb" />
+                <ScalarProperty Name="nStockMaximo" ColumnName="nStockMaximo" />
+                <ScalarProperty Name="nStockMinimo" ColumnName="nStockMinimo" />
+                <ScalarProperty Name="esAvisoStockMinimo" ColumnName="esAvisoStockMinimo" />
+                <ScalarProperty Name="esAvisoStockMaximo" ColumnName="esAvisoStockMaximo" />
+                <ScalarProperty Name="MedidaAlto" ColumnName="MedidaAlto" />
+                <ScalarProperty Name="MedidaAncho" ColumnName="MedidaAncho" />
+                <ScalarProperty Name="MedidaLargo" ColumnName="MedidaLargo" />
+                <ScalarProperty Name="esActivo" ColumnName="esActivo" />
+                <ScalarProperty Name="esCodigoAlterno" ColumnName="esCodigoAlterno" />
+                <ScalarProperty Name="esCompuesto" ColumnName="esCompuesto" />
+                <ScalarProperty Name="esFavorito" ColumnName="esFavorito" />
+                <ScalarProperty Name="esGarantia" ColumnName="esGarantia" />
+                <ScalarProperty Name="esImportado" ColumnName="esImportado" />
+                <ScalarProperty Name="esInventario" ColumnName="esInventario" />
+                <ScalarProperty Name="esPideComentario" ColumnName="esPideComentario" />
+                <ScalarProperty Name="esPidePeso" ColumnName="esPidePeso" />
+                <ScalarProperty Name="esPidePrecio" ColumnName="esPidePrecio" />
+                <ScalarProperty Name="esPideTipoProducto" ColumnName="esPideTipoProducto" />
+                <ScalarProperty Name="esUsoInterno" ColumnName="esUsoInterno" />
+                <ScalarProperty Name="esControlVenta" ColumnName="esControlVenta" />
+                <ScalarProperty Name="nCantidadMaxventa" ColumnName="nCantidadMaxventa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getProductos_idProducto" FunctionName="kss_dbModel.Store.getProductos_idProducto">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="kss_dbModel.getProductos_idProducto_Result">
+                <ScalarProperty Name="id_Productos" ColumnName="id_Productos" />
+                <ScalarProperty Name="id_Productos_familias" ColumnName="id_Productos_familias" />
+                <ScalarProperty Name="id_TiposMarcas" ColumnName="id_TiposMarcas" />
+                <ScalarProperty Name="id_TiposUnidadesMedida" ColumnName="id_TiposUnidadesMedida" />
+                <ScalarProperty Name="cantidadUnidadVenta" ColumnName="cantidadUnidadVenta" />
+                <ScalarProperty Name="CodigoAdicional" ColumnName="CodigoAdicional" />
+                <ScalarProperty Name="CodigoBarras" ColumnName="CodigoBarras" />
+                <ScalarProperty Name="CodigoInterno" ColumnName="CodigoInterno" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaUltimaCompra" ColumnName="FechaUltimaCompra" />
+                <ScalarProperty Name="FechaUltimaModificacion" ColumnName="FechaUltimaModificacion" />
+                <ScalarProperty Name="FechaUltimaVenta" ColumnName="FechaUltimaVenta" />
+                <ScalarProperty Name="MargenGananciaPrecio1" ColumnName="MargenGananciaPrecio1" />
+                <ScalarProperty Name="MargenGananciaPrecio2" ColumnName="MargenGananciaPrecio2" />
+                <ScalarProperty Name="MargenGananciaPrecio3" ColumnName="MargenGananciaPrecio3" />
+                <ScalarProperty Name="MontoCostoPromedio" ColumnName="MontoCostoPromedio" />
+                <ScalarProperty Name="MontoPrecio1" ColumnName="MontoPrecio1" />
+                <ScalarProperty Name="MontoPrecio2" ColumnName="MontoPrecio2" />
+                <ScalarProperty Name="MontoPrecio3" ColumnName="MontoPrecio3" />
+                <ScalarProperty Name="MontoUltimoCosto" ColumnName="MontoUltimoCosto" />
+                <ScalarProperty Name="nDiasGarantia" ColumnName="nDiasGarantia" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Producto_DescripcionLarga" ColumnName="Producto_DescripcionLarga" />
+                <ScalarProperty Name="Producto_LinkWeb" ColumnName="Producto_LinkWeb" />
+                <ScalarProperty Name="nStockMaximo" ColumnName="nStockMaximo" />
+                <ScalarProperty Name="nStockMinimo" ColumnName="nStockMinimo" />
+                <ScalarProperty Name="esAvisoStockMinimo" ColumnName="esAvisoStockMinimo" />
+                <ScalarProperty Name="esAvisoStockMaximo" ColumnName="esAvisoStockMaximo" />
+                <ScalarProperty Name="MedidaAlto" ColumnName="MedidaAlto" />
+                <ScalarProperty Name="MedidaAncho" ColumnName="MedidaAncho" />
+                <ScalarProperty Name="MedidaLargo" ColumnName="MedidaLargo" />
+                <ScalarProperty Name="esActivo" ColumnName="esActivo" />
+                <ScalarProperty Name="esCodigoAlterno" ColumnName="esCodigoAlterno" />
+                <ScalarProperty Name="esCompuesto" ColumnName="esCompuesto" />
+                <ScalarProperty Name="esFavorito" ColumnName="esFavorito" />
+                <ScalarProperty Name="esGarantia" ColumnName="esGarantia" />
+                <ScalarProperty Name="esImportado" ColumnName="esImportado" />
+                <ScalarProperty Name="esInventario" ColumnName="esInventario" />
+                <ScalarProperty Name="esPideComentario" ColumnName="esPideComentario" />
+                <ScalarProperty Name="esPidePeso" ColumnName="esPidePeso" />
+                <ScalarProperty Name="esPidePrecio" ColumnName="esPidePrecio" />
+                <ScalarProperty Name="esPideTipoProducto" ColumnName="esPideTipoProducto" />
+                <ScalarProperty Name="esUsoInterno" ColumnName="esUsoInterno" />
+                <ScalarProperty Name="esControlVenta" ColumnName="esControlVenta" />
+                <ScalarProperty Name="nCantidadMaxventa" ColumnName="nCantidadMaxventa" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

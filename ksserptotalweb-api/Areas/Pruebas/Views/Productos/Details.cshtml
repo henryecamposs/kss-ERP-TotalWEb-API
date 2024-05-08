@@ -1,0 +1,371 @@
+﻿@model ksserptotalweb_api.Capas.Datos.Productos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Productos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id_TiposMarcas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_TiposMarcas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cantidadUnidadVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cantidadUnidadVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoAdicional)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoAdicional)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoBarras)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoBarras)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoInterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoInterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaUltimaCompra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaUltimaCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaUltimaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaUltimaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaUltimaVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaUltimaVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MargenGananciaPrecio1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MargenGananciaPrecio1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MargenGananciaPrecio2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MargenGananciaPrecio2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MargenGananciaPrecio3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MargenGananciaPrecio3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoCostoPromedio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoCostoPromedio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoPrecio1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoPrecio1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoPrecio2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoPrecio2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoPrecio3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoPrecio3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoUltimoCosto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoUltimoCosto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nDiasGarantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nDiasGarantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto_DescripcionLarga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto_DescripcionLarga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto_LinkWeb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto_LinkWeb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nStockMaximo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nStockMaximo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nStockMinimo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nStockMinimo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esAvisoStockMinimo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esAvisoStockMinimo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esAvisoStockMaximo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esAvisoStockMaximo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedidaAlto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedidaAlto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedidaAncho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedidaAncho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedidaLargo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedidaLargo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esActivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esActivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esCodigoAlterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esCodigoAlterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esCompuesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esCompuesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esFavorito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esFavorito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esGarantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esGarantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esImportado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esImportado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esInventario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esInventario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esPideComentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esPideComentario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esPidePeso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esPidePeso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esPidePrecio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esPidePrecio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esPideTipoProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esPideTipoProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esUsoInterno)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esUsoInterno)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.esControlVenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.esControlVenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nCantidadMaxventa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nCantidadMaxventa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Productos_Familias.FamiliaProducto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Productos_Familias.FamiliaProducto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TiposUnidadesMedida.UnidadMedida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TiposUnidadesMedida.UnidadMedida)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_Productos }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

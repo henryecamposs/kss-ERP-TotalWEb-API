@@ -1,0 +1,75 @@
+﻿
+
+<table id="example" class="table table-condensed table-bordered table-striped">
+    <a href="@Url.Action("index", "Admin/Productos")">Click</a>
+
+
+    <div class="page-header">
+        <h1>Productos Usando Knockout Plugin</h1>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Productos</h2>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-unstyled" data-bind="foreach: Productos">
+                        <li>
+                            <strong><span data-bind="text: Producto"></span></strong>: <span data-bind="text: MOntoPrecio1"></span>
+                            <!-- New code -->
+                            <small><a href="#" data-bind="click: $parent.getproductoDetail">Details</a></small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="alert alert-danger" data-bind="visible: error"><p data-bind="text: error"></p></div>
+        </div>
+
+        <div class="col-md-4">
+            <!-- TODO: Book details -->
+        </div>
+
+        <div class="col-md-4">
+            <!-- TODO: Add new book -->
+        </div>
+    </div>
+
+
+    <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Código Barras</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Activo</th>
+        </tr>
+    </thead>
+    
+</table>
+@section scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#example').DataTable({
+                processing: true,
+                serverSide: true,
+                ordering: false,
+                paging: false,
+                searching: false,
+                ajax: "/api/Productos",
+                columns: [
+                    { "data": "id_Productos" },
+                    { "data": "CodigoBarras" },
+                    { "data": "Producto" },
+                    { "data": "MontoPrecio1" },
+                    { "data": "esActivo" }
+                ]
+            });
+        });
+    </script>
+}

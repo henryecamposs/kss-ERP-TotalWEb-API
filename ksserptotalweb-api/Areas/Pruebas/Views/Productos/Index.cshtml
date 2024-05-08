@@ -1,0 +1,292 @@
+﻿@model IEnumerable<ksserptotalweb_api.Capas.Datos.Productos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_TiposMarcas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidadUnidadVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoAdicional)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoBarras)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoInterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaUltimaCompra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaUltimaModificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaUltimaVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MargenGananciaPrecio1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MargenGananciaPrecio2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MargenGananciaPrecio3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoCostoPromedio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoPrecio1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoPrecio2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoPrecio3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontoUltimoCosto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nDiasGarantia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto_DescripcionLarga)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto_LinkWeb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nStockMaximo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nStockMinimo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esAvisoStockMinimo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esAvisoStockMaximo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedidaAlto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedidaAncho)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedidaLargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esActivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esCodigoAlterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esCompuesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esFavorito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esGarantia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esImportado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esInventario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esPideComentario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esPidePeso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esPidePrecio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esPideTipoProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esUsoInterno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.esControlVenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nCantidadMaxventa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Productos_Familias.FamiliaProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TiposUnidadesMedida.UnidadMedida)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_TiposMarcas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantidadUnidadVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoAdicional)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoBarras)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoInterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaUltimaCompra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaUltimaModificacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaUltimaVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MargenGananciaPrecio1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MargenGananciaPrecio2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MargenGananciaPrecio3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoCostoPromedio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoPrecio1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoPrecio2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoPrecio3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontoUltimoCosto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nDiasGarantia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto_DescripcionLarga)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto_LinkWeb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nStockMaximo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nStockMinimo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esAvisoStockMinimo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esAvisoStockMaximo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedidaAlto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedidaAncho)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedidaLargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esActivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esCodigoAlterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esCompuesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esFavorito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esGarantia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esImportado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esInventario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esPideComentario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esPidePeso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esPidePrecio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esPideTipoProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esUsoInterno)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.esControlVenta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nCantidadMaxventa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Productos_Familias.FamiliaProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TiposUnidadesMedida.UnidadMedida)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_Productos }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_Productos }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_Productos })
+        </td>
+    </tr>
+}
+
+</table>

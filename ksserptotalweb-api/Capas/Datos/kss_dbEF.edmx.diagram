@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d8eab2fbd0ee4f8ca68a9100ca1bc97d" Name="Diagram1" ZoomLevel="57">
+        <EntityTypeShape EntityType="kss_dbModel.Cajas" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.Empresas" Width="1.5" PointX="9.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.Estaciones" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.Facturas" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.Facturas_Detalle" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.Facturas_Detalle_Descuentos" Width="1.5" PointX="9.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.Facturas_Detalle_Impuestos" Width="1.5" PointX="9.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.Facturas_TiposPago" Width="1.5" PointX="7.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.Productos" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.Productos_Familias" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.Sucursales" Width="1.5" PointX="12" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="kss_dbModel.TiposUnidadesMedida" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
+        <AssociationConnector Association="kss_dbModel.FK_Cajas_Estaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="kss_dbModel.FK_Facturas_Cajas" ManuallyRouted="false" />
+        <AssociationConnector Association="kss_dbModel.FK_Sucursales_Empresas" ManuallyRouted="false" />
+        <AssociationConnector Association="kss_dbModel.FK_Facturas_Detalle_Facturas" ManuallyRouted="false" />
+        <AssociationConnector Association="kss_dbModel.FK_Facturas_TiposPago_Facturas" ManuallyRouted="false" />
+        <AssociationConnector Association="kss_dbModel.FK_Facturas_Detalle_Descuentos_Facturas_Detalle" ManuallyRouted="false" />
+        <AssociationConnector Association="kss_dbModel.FK_Facturas_Detalle_Impuestos_Facturas_Detalle" ManuallyRouted="false" />
+        <AssociationConnector Association="kss_dbModel.FK_Facturas_Detalle_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="kss_dbModel.FK_Productos_Productos_Familias" ManuallyRouted="false" />
+        <AssociationConnector Association="kss_dbModel.FK_Productos_TiposUnidadesMedida" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
